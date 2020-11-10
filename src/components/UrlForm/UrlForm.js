@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { postUrl } from '../../apiCalls.js';
 
 class UrlForm extends Component {
   constructor(props) {
@@ -14,7 +15,9 @@ class UrlForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
+    postUrl(this.state.urlToShorten, this.state.title)
+      .then(response => console.log(response));
     e.preventDefault();
     this.clearInputs();
   }
