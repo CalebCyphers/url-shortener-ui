@@ -13,6 +13,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
+    this.setUrls()
   }
 
   render() {
@@ -26,6 +27,11 @@ export class App extends Component {
         <UrlContainer urls={this.state.urls}/>
       </main>
     );
+  }
+
+  async setUrls() {
+    let promise = await getUrls()
+    this.setState({ urls: promise.urls})
   }
 }
 
